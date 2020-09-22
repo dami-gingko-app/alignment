@@ -43,7 +43,7 @@ The only requirement for this mode is that Docker and Docker Compose be installe
  means to do this too.). This starts the back-end.
  4. In a browser, navigate to **http://localhost:4200** to bring up the web application interface.
  
- ## Guide to the Application
+ ## Application Notes
  ![Screenshot](/images/screenshot.jpg)
  
  1. The query sequence can be entered in the input box at the top of the webpage.
@@ -61,6 +61,6 @@ The only requirement for this mode is that Docker and Docker Compose be installe
  could be parsed into a database, perhaps an in-memory version.
  ... There are many, many more ways to scale and optimize this application, but I am running out of time.
  
- It's been great fun working on this app!
+*** It's been great fun working on this app! ***
  
  
