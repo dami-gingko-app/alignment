@@ -12,10 +12,12 @@ Note that NC_023640 was in the 'provided list' in the challenge requirements. Ho
 
 ## Implementation Notes
 1. The back-end has been written in Java 8 with SpringBoot, and the front-end is in Angular 9. 
-2. Build and deploy can be easily done using Docker and Docker Compose. 
+2. Build and deploy can be most easily done using Docker and Docker Compose. 
 3. Data for each of assemblies in the 'provided list' were obtained from the corresponding NCBI Nucleotide site. <br>
 E.g. For NC_027867, I navigated to https://www.ncbi.nlm.nih.gov/nuccore/NC_027867. I clicked on the 'Send to' link in the
 top right area, and downloaded a feature file for the Coding Sequences (in FASTA Nucleotide format).
+4. Unit tests - both for back and front end, are needed. For the back-end, I started to create the folder structure and resource files.
+I also included a single nominal unit test - I ran out of time to do more.
 
 ## Installation and Deploy
 Download the code in this Github repo to a location on your machine. 
@@ -43,5 +45,22 @@ The only requirement for this mode is that Docker and Docker Compose be installe
  
  ## Guide to the Application
  ![Screenshot](/images/screenshot.jpg)
+ 
+ 1. The query sequence can be entered in the input box at the top of the webpage.
+ 2. The 'Sequence Match Results' section contains all queries with match details (if any). These are
+ maintained on tab/browser reopen. This includes any pending queries.
+ 3. The button 'Clear Results' will clear all match results.
+ 
+ ## Improvements
+ This is a very basic application, there is much to improve and optimize.
+ 1. Unit tests should be written for both the back and front ends. 
+ 2. Currently, an exact substring match is performed. However, exactness may not be needed. Going forward, this would probably 
+ utilize a more intelligent matching algorithm.
+ 3. Instead of reading off the assembly files in the 'resources' folder, we may want to make REST calls to NCBI instead. However,
+ frequent calls to NCBI can experience outages. Another approach to this would be to do nightly downloads from NCBI. This data
+ could be parsed into a database, perhaps an in-memory version.
+ ... There are many, many more ways to scale and optimize this application, but I am running out of time.
+ 
+ It's been great fun working on this app!
  
  
