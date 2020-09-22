@@ -3,7 +3,7 @@
 ## Introduction
 This project is a simple DNA sequence alignment web application. Users can submit any DNA sequence(consisting of 'A','T','G' and 'C's), and the 
 application will parse over the protein sequences in a provided list of assemblies to find an alignment. Details of the alignments 
-are displayed. A history of queries that have been submitted is maintained.
+are displayed. A history of queries that have been submitted is maintained (This is at the application level.)
 
 The list of assemblies across which to conduct searches are NC_000852, NC_007346, NC_008724, NC_009899, NC_014637, NC_020104, NC_023423, 
 NC_016072, NC_023719, and NC_027867.
@@ -18,6 +18,8 @@ E.g. For NC_027867, I navigated to https://www.ncbi.nlm.nih.gov/nuccore/NC_02786
 top right area, and downloaded a feature file for the Coding Sequences (in FASTA Nucleotide format).
 4. Unit tests - both for back and front end, are needed. For the back-end, I started to create the folder structure and resource files.
 I also included a single nominal unit test - I ran out of time to do more.
+5. The web page shows a history of query requests across all users. I have not implemented a user-level history. However, there is a
+button to clear the current history that is displayed.
 
 ## Installation and Deploy
 Download the code in this Github repo to a location on your machine. 
