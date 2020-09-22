@@ -61,7 +61,7 @@ export class AlignmentService {
             .post(this.alignUrl, seqObj, {'headers': headers})
             .subscribe(data => {
                 let result = this.createMatchObject(data);
-                matchResults.push(result);
+                matchResults.unshift(result);
             });
     }
 

@@ -15,7 +15,8 @@ Note that NC_023640 was in the 'provided list' in the challenge requirements. Ho
 2. Build and deploy can be most easily done using Docker and Docker Compose. 
 3. Data for each of assemblies in the 'provided list' were obtained from the corresponding NCBI Nucleotide site. <br>
 E.g. For NC_027867, I navigated to https://www.ncbi.nlm.nih.gov/nuccore/NC_027867. I clicked on the 'Send to' link in the
-top right area, and downloaded a feature file for the Coding Sequences (in FASTA Nucleotide format).
+top right area, and downloaded a feature file for the Coding Sequences (in FASTA Nucleotide format). These files can be found
+in the alignment-service module, in the directory resources/coding-sequences.
 4. Unit tests - both for back and front end, are needed. For the back-end, I started to create the folder structure and resource files.
 I also included a single nominal unit test - I ran out of time to do more.
 5. The web page shows a history of query requests across all users. I have not implemented a user-level history. However, there is a
