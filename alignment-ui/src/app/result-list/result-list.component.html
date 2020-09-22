@@ -1,10 +1,11 @@
+<!-- Pane containing alignment results -->
 <div>
-    <b>Sequence Match Results</b>
+    <b>Sequence Alignment Results</b>
     <button class="buttonReverse" (click)="clearResults()">Clear Results</button>
 </div>
 <hr>
 
-<!-- List of result matches -->
+<!-- List of alignment matches -->
 <div class="wrap" *ngFor="let result of curResults; index as resultId" >
     <span> <b> Sequence Query </b> : {{result.query}} <br> </span>
     <div *ngIf="result.assembly !== null">

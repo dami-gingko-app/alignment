@@ -3,6 +3,9 @@ import {Match} from "../match";
 import {matchResults} from "../matchResults";
 import {HttpClient} from '@angular/common/http';
 
+/**
+ * Service to make REST queries to backend
+ */
 @Injectable({
     providedIn: 'root'
 })

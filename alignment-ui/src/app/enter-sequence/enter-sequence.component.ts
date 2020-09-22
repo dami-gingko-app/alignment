@@ -38,7 +38,7 @@ export class EnterSequenceComponent implements OnInit {
   }
 
   ngOnInit() {
-    // When webpage is opened, load all matches in the backend
+    // When webpage is opened, load all matches from the backend
     this.alignService.getAllMatches();
   }
 

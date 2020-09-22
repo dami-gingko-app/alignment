@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { matchResults } from '../matchResults';
 import { AlignmentService} from "../alignment-service/alignment.service";
 
+/**
+ * Component for result list pane
+ */
 @Component({
   selector: 'app-result-list',
   templateUrl: './result-list.component.html',
