@@ -23,8 +23,8 @@ import java.util.Map;
 public class AlignmentService {
 
     // Genome assemblies that will be queried
-    final String[] assemblies = {"NC_027867", "NC_023719", "NC_016072", "NC_023423", "NC_020104", "NC_014637", "NC_009899",
-            "NC_008724", "NC_007346", "NC_000852"};
+    final String[] assemblies = {"NC_027867.1", "NC_023719.1", "NC_016072.1", "NC_023423.1", "NC_020104.1", "NC_014637.1", "NC_009899.1",
+            "NC_008724.1", "NC_007346.1", "NC_000852.5"};
 
     /**
      * Parent method for performing an alignment for a query sequence

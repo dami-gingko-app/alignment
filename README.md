@@ -19,8 +19,8 @@ top right area, and downloaded a feature file for the Coding Sequences (in FASTA
 in the alignment-service module, in the directory resources/coding-sequences.
 4. Unit tests - both for back and front end, are needed. For the back-end, I started to create the folder structure and resource files.
 I also included a single nominal unit test - I ran out of time to do more.
-5. The web page shows a history of query requests across all users. I have not implemented a user-level history. However, there is a
-button to clear the current history that is displayed.
+5. The web page shows a history of query requests across all users (the latest submission shows first in the list). I have not
+implemented a user-level history. However, there is a button to clear the current history that is displayed.
 
 ## Installation and Deploy
 Download the code in this Github repo to a location on your machine. 
@@ -53,6 +53,7 @@ The only requirement for this mode is that Docker and Docker Compose be installe
  2. The 'Sequence Match Results' section contains all queries with match details (if any). These are
  maintained on tab/browser reopen. This includes any pending queries.
  3. The button 'Clear Results' will clear all match results.
+ 4. When performing an alignment, the system only looks for the first match - any subsequent alignments are ignored.
  
  ## Improvements
  This is a very basic application, there is much to improve and optimize.
