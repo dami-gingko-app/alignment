@@ -6,6 +6,8 @@ import {HttpClientModule} from '@angular/common/http';
 import {AppComponent} from './app.component';
 import {EnterSequenceComponent} from './enter-sequence/enter-sequence.component';
 import {ResultListComponent} from './result-list/result-list.component';
+import { Globals } from './globals';
+import {LocalstorageService} from "./localstorage-service/localstorage.service";
 
 @NgModule({
     imports: [
@@ -17,6 +19,7 @@ import {ResultListComponent} from './result-list/result-list.component';
         FormsModule,
         HttpClientModule,
     ],
+    providers: [ Globals, LocalstorageService ],
     declarations: [
         AppComponent,
         EnterSequenceComponent,

@@ -3,7 +3,7 @@
 ## Introduction
 This project is a simple DNA sequence alignment web application. Users can submit any DNA sequence(consisting of 'A','T','G' and 'C's), and the 
 application will parse over the protein sequences in a provided list of assemblies to find an alignment. Details of the alignments 
-are displayed. A history of queries that have been submitted is maintained (This is at the application level.)
+are displayed. A history of query results that have been submitted is maintained.
 
 The list of assemblies across which to conduct searches are NC_000852, NC_007346, NC_008724, NC_009899, NC_014637, NC_020104, NC_023423, 
 NC_016072, NC_023719, and NC_027867.
@@ -17,12 +17,17 @@ Note that NC_023640 was in the 'provided list' in the challenge requirements. Ho
 E.g. For NC_027867, I navigated to https://www.ncbi.nlm.nih.gov/nuccore/NC_027867. I clicked on the 'Send to' link in the
 top right area, and downloaded a feature file for the Coding Sequences (in FASTA Nucleotide format). These files can be found
 in the alignment-service module, in the directory resources/coding-sequences.
-4. Unit tests - both for back and front end, are needed. For the back-end, I started to create the folder structure and resource files.
-I also included a single nominal unit test - I ran out of time to do more.
-5. The web page shows a history of query requests across all users (the latest submission shows first in the list). I have not
-implemented a user-level history. However, there is a button to clear the current history that is displayed.
+4. I have written some unit/integration tests for the backend, more are needed. I have not had the time to write any unit tests
+for the front end.
+5. A history of query requests(with results) are displayed, with the most recent at the top. On closing out of the browser, and 
+restarting, these results will still be shown. If there were any submissions pending at the time the browser was closed, 
+the submissions are triggered again. The history is specific to a machine. Users accessing the website from other machines
+will not share results.
 
-## Installation and Deploy
+## Hosted app
+This app has been hosted on DigitalOcean, and is available at http://67.205.186.166:9898.
+
+## Install and Deploy Locally
 Download the code in this Github repo to a location on your machine. 
 
 #### With Docker 
@@ -57,12 +62,13 @@ The only requirement for this mode is that Docker and Docker Compose be installe
  
  ## Improvements
  This is a very basic application, there is much to improve and optimize.
- 1. Unit tests should be written for both the back and front ends. 
+ 1. More unit tests should be written for both the back and front ends. 
  2. Currently, an exact substring match is performed. However, exactness may not be needed. Going forward, this would probably 
  utilize a more intelligent matching algorithm.
  3. Instead of reading off the assembly files in the 'resources' folder, we may want to make REST calls to NCBI instead. However,
  frequent calls to NCBI can experience outages. Another approach to this would be to do nightly downloads from NCBI. This data
  could be parsed into a database, perhaps an in-memory version.
+ 4. Exception handling and logging needs to be implemented.
  ... There are many, many more ways to scale and optimize this application, but I am running out of time.
  
 *** It's been great fun working on this app! ***

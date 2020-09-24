@@ -43,7 +43,7 @@ public class AlignmentService {
      * @param query Query sequence
      * @return QueryMatch object
      */
-    protected QueryMatch parseFastaFiles(String query, String[] fastaFileNames)  {
+    public QueryMatch parseFastaFiles(String query, String[] fastaFileNames)  {
         query = query.toUpperCase();
         QueryMatch match = new QueryMatch(query);
 
@@ -60,7 +60,7 @@ public class AlignmentService {
 
     /**
      * Parses an input stream from a FASTA file to find a match object.
-     * The file is a set of coding sequences.
+     * The file supplied is a set of coding sequences.
      *
      * Extract from a sample file -
      * >lcl|NC_000852.5_cds_YP_004678870.1_3 [gene=a002aR] [locus_tag=PBCV1_a002aR] [db_xref=GeneID:10971234] [protein=hypothetical protein] [protein_id=YP_004678870.1] [location=1022..1177] [gbkey=CDS]

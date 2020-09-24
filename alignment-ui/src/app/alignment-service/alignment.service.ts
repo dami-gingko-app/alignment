@@ -1,7 +1,10 @@
 import {Injectable} from '@angular/core';
 import {Match} from "../match";
-import {matchResults} from "../matchResults";
 import {HttpClient} from '@angular/common/http';
+import {Globals} from "../globals";
+import {LocalstorageService} from "../localstorage-service/localstorage.service";
+
+
 
 /**
  * Service to make REST queries to backend
@@ -13,39 +16,8 @@ export class AlignmentService {
     allMatches: any;
     alignUrl = 'http://localhost:8080/alignAsync';
     matchesUrl = 'http://localhost:8080/allMatches';
-    clearUrl = 'http://localhost:8080/clearMatches';
-    response: [];
 
-    constructor(private http: HttpClient) {
-    }
-
-    /**
-     * Clears all query matches from backend, and reloads
-     */
-    clearMatches() {
-        // REST call
-        this.http.get<any>(this.clearUrl).subscribe(response => {
-            // Reload after queries are cleared
-            this.getAllMatches();
-        });
-    }
-
-    /**
-     *  Get all current query matches from backend
-     */
-    getAllMatches() {
-        // Clear current matchResults
-        while (matchResults.length > 0) {
-            matchResults.pop();
-        }
-        this.http.get<Match[]>(this.matchesUrl)
-            .subscribe(response => {
-                console.log("response " + response);
-                response.forEach(data => {
-                    let cur = this.createMatchObject(data);
-                    matchResults.push(cur);
-                })
-            });
+    constructor(private http: HttpClient,  public globals: Globals, private storageService: LocalstorageService) {
     }
 
     /**
@@ -56,12 +28,21 @@ export class AlignmentService {
         let seqObj = {sequence: seq};
         let headers = {'Access-Control-Allow-Origin': '*'}
 
+        // Request is stored in localstorage in case there is a restart before the result arrives at the UI
+        this.storageService.addItemToArr('pending', seq);
+
         // POST call
         this.http
             .post(this.alignUrl, seqObj, {'headers': headers})
             .subscribe(data => {
                 let result = this.createMatchObject(data);
-                matchResults.unshift(result);
+                console.log(this.globals.matches)
+                console.log(result)
+                this.globals.matches.unshift(result);
+
+                //Matches are stored in localStorage so that they are maintained across restart
+                localStorage.setItem('matches', JSON.stringify(this.globals.matches));
+                this.storageService.removeItemFromArr('pending', seq);
             });
     }
 

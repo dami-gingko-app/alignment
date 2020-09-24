@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AlignmentService} from "../alignment-service/alignment.service";
 
 /**
@@ -9,10 +9,9 @@ import { AlignmentService} from "../alignment-service/alignment.service";
   templateUrl: './enter-sequence.component.html',
   styleUrls: ['./enter-sequence.component.css']
 })
-export class EnterSequenceComponent implements OnInit {
+export class EnterSequenceComponent {
 
-  constructor(
-        private alignService: AlignmentService) {
+  constructor(private alignService: AlignmentService) {
   }
 
   sequence:string;
@@ -37,10 +36,6 @@ export class EnterSequenceComponent implements OnInit {
      window.alert('Your submission can only contain characters A,T,G,C');
   }
 
-  ngOnInit() {
-    // When webpage is opened, load all matches from the backend
-    this.alignService.getAllMatches();
-  }
 
   clearInput() {
     this.sequence="";
